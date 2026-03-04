@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Source+Code+Pro:wght@500&display=swap');
+
+:root {
+  --ink-900: #0f172a;
+  --ink-700: #1e293b;
+  --ink-500: #475569;
+  --ink-300: #94a3b8;
+  --border-200: #e2e8f0;
+  --border-100: #f1f5f9;
+  --accent-600: #059669;
+  --accent-500: #10b981;
+  --accent-400: #34d399;
+  --accent-300: #6ee7b7;
+  --mint-500: #10b981;
+  --warning-500: #f59e0b;
+  --danger-500: #ef4444;
+  --bubble-500: #10b981;
+  --bubble-400: #34d399;
+  --surface-100: #ffffff;
+  --surface-200: #f8fafc;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 14px 40px rgba(15, 23, 42, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--ink-900);
+  background: #f3f8f4;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  display: none;
+}
+
+code {
+  font-family: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
