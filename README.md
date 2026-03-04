@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+Shop CRM System
+Full-stack CRM application with a React frontend and a Spring Boot backend for managing users, customers, products, deals, orders, and sales history.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Structure
+fsproject/
+├── src/                      # React frontend source
+├── public/                   # React public assets
+├── package.json              # Frontend dependencies/scripts
+└── myproject/                # Spring Boot backend
+	 ├── pom.xml
+	 └── src/main/java/com/example/myproject
+Tech Stack
+Frontend
+React (Create React App)
+React Router
+Fetch API for backend communication
+Backend
+Spring Boot 4
+Spring Web
+Spring Data JPA
+PostgreSQL (configured)
+H2 dependency available for runtime
+Maven
+Features
+User signup and login (/users and /users/login)
+Dashboard summary (customers, orders, products, revenue)
+Customer management
+Product management
+Order management
+Deal management
+Sales history view
+Prerequisites
+Node.js 18+ and npm
+Java 17+
+Maven 3.9+ (or use mvnw / mvnw.cmd)
+PostgreSQL running locally
+Backend Setup (Spring Boot)
+Open myproject/src/main/resources/application.properties and set your PostgreSQL values:
 
-## Available Scripts
+spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
+spring.datasource.username=postgres
+spring.datasource.password=your_password
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+server.port=8080
+Start the backend from the myproject folder:
 
-In the project directory, you can run:
+Windows (PowerShell/CMD):
 
-### `npm start `
+.\mvnw.cmd spring-boot:run
+Or with Maven installed globally:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+mvn spring-boot:run
+Backend runs on http://localhost:8080.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Frontend Setup (React)
+From the project root (fsproject), install dependencies:
 
-### `npm test`
+npm install
+Start the frontend:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm start
+Frontend runs on http://localhost:3000.
 
-### `npm run build`
+Running Full App Locally
+Start backend first, then start frontend.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Terminal 1:
+cd myproject
+.\mvnw.cmd spring-boot:run
+Terminal 2:
+npm start
+API Endpoints (Current Controllers)
+Users
+GET /users
+GET /users/{id}
+POST /users
+DELETE /users/{id}
+POST /users/login
+Customers
+GET /customers
+GET /customers/{id}
+POST /customers
+PUT /customers/{id}
+DELETE /customers/{id}
+Products
+GET /products
+GET /products/{id}
+POST /products
+PUT /products/{id}
+DELETE /products/{id}
+Orders
+GET /orders
+GET /orders/{id}
+GET /orders/customer/{customerId}
+POST /orders
+PUT /orders/{id}/status
+DELETE /orders/{id}
+Deals
+GET /deals
+GET /deals/{id}
+POST /deals
+PUT /deals/{id}
+DELETE /deals/{id}
+Frontend Scripts
+npm start - Run app in development mode
+npm test - Run tests
+npm run build - Build production bundle
+Backend Test
+From myproject:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+.\mvnw.cmd test
+Notes
+Frontend components currently call backend directly at http://localhost:8080.
+CORS is enabled in controllers via @CrossOrigin.
